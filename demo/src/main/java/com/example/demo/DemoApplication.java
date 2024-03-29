@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import com.example.demo.tables.author_id.Authors;
+import com.example.demo.tables.author_id.AuthorsService;
+import com.example.demo.tables.scripts_table.ScriptsService;
 import com.example.demo.tests.CourseService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
@@ -15,8 +18,24 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(DemoApplication.class, args);
-		CourseService courseService = context.getBean(CourseService.class);
-		String s=courseService.printCourseHours();
+		AuthorsService authorService = context.getBean(AuthorsService.class);
+		ScriptsService scriptsService = context.getBean(ScriptsService.class);
+
+		//authorService.addAuthor("saranin");
+//		scriptsService.addScriptToStore("helper","cool sctript",19.99,"saranin","1.png");
+//		scriptsService.addScriptToStore("visual","for video",4.49,"saranin","2.png");
+//		scriptsService.addScriptToStore("Super","cool sctript",190.99,"saranin","1.png");
+//		scriptsService.addScriptToStore("Normal script","for video",1.29,"saranin","2.png");
+//		scriptsService.addScriptToStore("Nice","cool sctript",99.99,"saranin","1.png");
+//		scriptsService.addScriptToStore("Video edit","for video",10,"saranin","2.png");
+		//scriptsService.addScriptToStore("New script","cool sctript",99.99,"saranin","1.png");
+		//scriptsService.addScriptToStore("Editor","for video",10,"saranin","2.png");
+
+
+		scriptsService.printAllScripts();
+
+		//CourseService courseService = context.getBean(CourseService.class);
+		String s=scriptsService.getPrices();
 		System.out.println(s);
 	}
 

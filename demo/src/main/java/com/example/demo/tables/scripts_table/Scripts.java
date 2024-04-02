@@ -56,6 +56,14 @@ public class Scripts {
         this.pathToPicture = pathToPicture;
     }
 
+    public String getPathToFile() {
+        return pathToFile;
+    }
+
+    public void setPathToFile(String pathToFile) {
+        this.pathToFile = pathToFile;
+    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,4 +85,7 @@ public class Scripts {
 
     @Column(name = "path_to_picture", columnDefinition = "TEXT")
     private String pathToPicture;
+
+    @Column(name = "path_to_file", columnDefinition = "TEXT")
+    private String pathToFile;
 }

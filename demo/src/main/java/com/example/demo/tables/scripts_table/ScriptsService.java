@@ -7,16 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
+
 
 @Service
 public class ScriptsService {
 
+
+
     @Autowired
-    private ScriptsRepository scriptRepository;
+    private ScriptsRepository scriptsRepository;
 
     @Autowired
     private AuthorsRepository authorRepository;
-    public Scripts addScriptToStore(String name,String description,double price,String authorName,String pathToPicture) {
+    public Scripts addScriptToStore(String name,String description,double price,String authorName,String pathToPicture,String pathToFile) {
 
         Authors author = authorRepository.findByName(authorName);
 
@@ -26,23 +31,25 @@ public class ScriptsService {
         newScript.setPrice(price);
         newScript.setAuthor(author);
         newScript.setPathToPicture(pathToPicture);
+        newScript.setPathToFile(pathToFile);
 
-        return scriptRepository.save(newScript);
+        return scriptsRepository.save(newScript);
     }
 
     public void printAllScripts() {
-        List<Scripts> scripts = scriptRepository.findAll();
+        List<Scripts> scripts = scriptsRepository.findAll();
         for (Scripts script : scripts) {
             System.out.println("Name: " + script.getName() +
                     ", Description: " + script.getDescription() +
                     ", Price: " + script.getPrice() +
                     ", NameAuthor: " + (script.getAuthor() != null ? script.getAuthor().getName() : "No author") +
-                    ", PathToPicture: " + script.getPathToPicture());
+                    ", PathToPicture: " + script.getPathToPicture()+
+                    ", PathToFile: " + script.getPathToFile());
         }
     }
 
     public String getPrices() {
-        List<Scripts> courses = scriptRepository.findAll();
+        List<Scripts> courses = scriptsRepository.findAll();
         String s="";
         for(Scripts scripts : courses) {
             s=s+scripts.getPrice()+" ";
@@ -52,6 +59,18 @@ public class ScriptsService {
     }
 
     public List<Scripts> getAllScripts() {
-        return scriptRepository.findAll();
+        return scriptsRepository.findAll();
     }
+
+    public String findPathToFileById(String id) {
+        Optional<Scripts> scriptOptional = scriptsRepository.findById(Long.parseLong(id));
+        if (scriptOptional.isPresent()) {
+            return scriptOptional.get().getPathToFile();
+        } else {
+            return null; // или выбросить исключение, если скрипт не найден
+        }
+    }
+
+
+
 }

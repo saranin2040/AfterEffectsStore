@@ -21,15 +21,15 @@ public class DemoApplication {
 		AuthorsService authorService = context.getBean(AuthorsService.class);
 		ScriptsService scriptsService = context.getBean(ScriptsService.class);
 
-		//authorService.addAuthor("saranin");
-//		scriptsService.addScriptToStore("helper","cool sctript",19.99,"saranin","1.png");
-//		scriptsService.addScriptToStore("visual","for video",4.49,"saranin","2.png");
-//		scriptsService.addScriptToStore("Super","cool sctript",190.99,"saranin","1.png");
-//		scriptsService.addScriptToStore("Normal script","for video",1.29,"saranin","2.png");
-//		scriptsService.addScriptToStore("Nice","cool sctript",99.99,"saranin","1.png");
-//		scriptsService.addScriptToStore("Video edit","for video",10,"saranin","2.png");
-		//scriptsService.addScriptToStore("New script","cool sctript",99.99,"saranin","1.png");
-		//scriptsService.addScriptToStore("Editor","for video",10,"saranin","2.png");
+		authorService.addAuthor("saranin");
+		scriptsService.addScriptToStore("helper","cool sctript",19.99,"saranin","1.png","D:\\All\\files\\script2.txt");
+		scriptsService.addScriptToStore("visual","for video",4.49,"saranin","2.png","D:\\All\\files\\script.txt");
+		scriptsService.addScriptToStore("Super","cool sctript",190.99,"saranin","1.png","D:\\All\\files\\script.txt");
+		scriptsService.addScriptToStore("Normal script","for video",1.29,"saranin","2.png","D:\\All\\files\\script.txt");
+		scriptsService.addScriptToStore("Nice","cool sctript",99.99,"saranin","1.png","D:\\All\\files\\script.txt");
+		scriptsService.addScriptToStore("Video edit","for video",10,"saranin","2.png","D:\\All\\files\\script.txt");
+		scriptsService.addScriptToStore("New script","cool sctript",99.99,"saranin","1.png","D:\\All\\files\\script.txt");
+		scriptsService.addScriptToStore("Editor","for video",10,"saranin","2.png","D:\\All\\files\\script.txt");
 
 
 		scriptsService.printAllScripts();

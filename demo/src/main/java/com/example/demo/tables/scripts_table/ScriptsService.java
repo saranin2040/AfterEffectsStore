@@ -21,7 +21,7 @@ public class ScriptsService {
 
     @Autowired
     private AuthorsRepository authorRepository;
-    public Scripts addScriptToStore(String name,String description,double price,String authorName,String pathToPicture,String pathToFile) {
+    public Scripts addScriptToStore(String name,String description,double price,String authorName,String pathToPicture,String pathToFile,String youtubeVideoId) {
 
         Authors author = authorRepository.findByName(authorName);
 
@@ -30,8 +30,9 @@ public class ScriptsService {
         newScript.setDescription(description);
         newScript.setPrice(price);
         newScript.setAuthor(author);
-        newScript.setPathToPicture(pathToPicture);
-        newScript.setPathToFile(pathToFile);
+        newScript.setPath_to_picture(pathToPicture);
+        newScript.setPath_to_file(pathToFile);
+        newScript.setYoutube_video_id(youtubeVideoId);
 
         return scriptsRepository.save(newScript);
     }
@@ -43,8 +44,9 @@ public class ScriptsService {
                     ", Description: " + script.getDescription() +
                     ", Price: " + script.getPrice() +
                     ", NameAuthor: " + (script.getAuthor() != null ? script.getAuthor().getName() : "No author") +
-                    ", PathToPicture: " + script.getPathToPicture()+
-                    ", PathToFile: " + script.getPathToFile());
+                    ", PathToPicture: " + script.getPath_to_picture()+
+                    ", PathToFile: " + script.getPath_to_file()+
+                    ", YoutubeVideoId: " + script.getYoutube_video_id());
         }
     }
 
@@ -61,11 +63,15 @@ public class ScriptsService {
     public List<Scripts> getAllScripts() {
         return scriptsRepository.findAll();
     }
+    public Optional<Scripts> getScriptById(Long id)
+    {
+        return scriptsRepository.findById(id);
+    }
 
     public String findPathToFileById(String id) {
         Optional<Scripts> scriptOptional = scriptsRepository.findById(Long.parseLong(id));
         if (scriptOptional.isPresent()) {
-            return scriptOptional.get().getPathToFile();
+            return scriptOptional.get().getPath_to_file();
         } else {
             return null; // или выбросить исключение, если скрипт не найден
         }

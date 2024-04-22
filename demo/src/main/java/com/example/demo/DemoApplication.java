@@ -22,14 +22,14 @@ public class DemoApplication {
 		ScriptsService scriptsService = context.getBean(ScriptsService.class);
 
 		authorService.addAuthor("saranin");
-		scriptsService.addScriptToStore("helper","cool sctript",19.99,"saranin","1.png","D:\\All\\files\\script2.txt");
-		scriptsService.addScriptToStore("visual","for video",4.49,"saranin","2.png","D:\\All\\files\\script.txt");
-		scriptsService.addScriptToStore("Super","cool sctript",190.99,"saranin","1.png","D:\\All\\files\\script.txt");
-		scriptsService.addScriptToStore("Normal script","for video",1.29,"saranin","2.png","D:\\All\\files\\script.txt");
-		scriptsService.addScriptToStore("Nice","cool sctript",99.99,"saranin","1.png","D:\\All\\files\\script.txt");
-		scriptsService.addScriptToStore("Video edit","for video",10,"saranin","2.png","D:\\All\\files\\script.txt");
-		scriptsService.addScriptToStore("New script","cool sctript",99.99,"saranin","1.png","D:\\All\\files\\script.txt");
-		scriptsService.addScriptToStore("Editor","for video",10,"saranin","2.png","D:\\All\\files\\script.txt");
+		scriptsService.addScriptToStore("helper","cool sctript",19.99,"saranin","textforce.png","D:\\All\\files\\script2.txt","HcZrog9ULHg");
+		scriptsService.addScriptToStore("easy","for video",4.49,"saranin","Screenshot_1.png","D:\\All\\files\\script.txt","HcZrog9ULHg");
+		scriptsService.addScriptToStore("keystone","cool sctript",190.99,"saranin","keystone.png","D:\\All\\files\\script.txt","HcZrog9ULHg");
+		scriptsService.addScriptToStore("Normal script","for video",1.29,"saranin","textforce.png","D:\\All\\files\\script.txt","HcZrog9ULHg");
+		scriptsService.addScriptToStore("Nice","cool sctript",99.99,"saranin","Screenshot_1.png","D:\\All\\files\\script.txt","HcZrog9ULHg");
+		scriptsService.addScriptToStore("Video edit","for video",10,"saranin","keystone.png","D:\\All\\files\\script.txt","HcZrog9ULHg");
+		scriptsService.addScriptToStore("textforce","cool sctript",99.99,"saranin","textforce.png","D:\\All\\files\\script.txt","HcZrog9ULHg");
+		scriptsService.addScriptToStore("Editor","for video",10,"saranin","Screenshot_1.png","D:\\All\\files\\script.txt","HcZrog9ULHg");
 
 
 		scriptsService.printAllScripts();

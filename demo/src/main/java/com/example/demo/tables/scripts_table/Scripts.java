@@ -48,26 +48,34 @@ public class Scripts {
         this.author = nameAuthor;
     }
 
-    public String getPathToPicture() {
-        return pathToPicture;
+    public String getPath_to_picture() {
+        return path_to_picture;
     }
 
-    public void setPathToPicture(String pathToPicture) {
-        this.pathToPicture = pathToPicture;
+    public void setPath_to_picture(String pathToPicture) {
+        this.path_to_picture = pathToPicture;
     }
 
-    public String getPathToFile() {
-        return pathToFile;
+    public String getPath_to_file() {
+        return path_to_file;
     }
 
-    public void setPathToFile(String pathToFile) {
-        this.pathToFile = pathToFile;
+    public void setPath_to_file(String pathToFile) {
+        this.path_to_file = pathToFile;
+    }
+
+    public String getYoutube_video_id() {
+        return youtube_video_id;
+    }
+
+    public void setYoutube_video_id(String youtube_video_id) {
+        this.youtube_video_id = youtube_video_id;
     }
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "script_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -80,12 +88,15 @@ public class Scripts {
     private Double price;
 
     @ManyToOne
-    @JoinColumn(name = "name_author", referencedColumnName = "name")
+    @JoinColumn(name = "author", referencedColumnName = "name")
     private Authors author;
 
     @Column(name = "path_to_picture", columnDefinition = "TEXT")
-    private String pathToPicture;
+    private String path_to_picture;
 
     @Column(name = "path_to_file", columnDefinition = "TEXT")
-    private String pathToFile;
+    private String path_to_file;
+
+    @Column(name = "youtube_video_id", columnDefinition = "TEXT")
+    private String youtube_video_id;
 }

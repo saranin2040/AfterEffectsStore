@@ -11,10 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
@@ -62,6 +59,20 @@ public class ExampleController {
         return ResponseEntity.ok().body(dataFromDatabase);
     }
 
+    @GetMapping("api/scripts/{id}")
+    public ResponseEntity<?> getScriptById(@PathVariable Long id) {
+        // Предполагается, что у сервиса есть метод getScriptById, который возвращает объект Script
+        // или null, если скрипт с таким ID не найден
+        Optional<Scripts> optionalScript = scriptsService.getScriptById(id);
+        Scripts script = optionalScript.orElse(null);
+
+        if (script != null) {
+            return ResponseEntity.ok().body(script);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping("/api/add/script")
     public ResponseEntity<?> addScript(
             @RequestParam("scriptName") String name,
@@ -80,7 +91,7 @@ public class ExampleController {
         logger.info("Files saved");
 
         // Добавление скрипта в сервис
-        Scripts script = scriptsService.addScriptToStore(name, description, price, authorName, pathToPicture, pathToFile);
+        Scripts script = scriptsService.addScriptToStore(name, description, price, authorName, pathToPicture, pathToFile,"HcZrog9ULHg");
 
         logger.info("Script added");
 

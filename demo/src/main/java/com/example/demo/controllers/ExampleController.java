@@ -37,6 +37,43 @@ public class ExampleController {
         this.scriptsService=scriptsService;
     }
 
+
+    @GetMapping("/downloadFile")
+    public ResponseEntity<Resource> downloadFile() {
+        try {
+
+
+            System.out.println("start send file");
+            // Указываем путь к файлу, который хотим отправить
+            Path filePath = Paths.get("D:/All/scr.txt");
+            Resource resource = new UrlResource(filePath.toUri());
+
+            if (resource.exists() || resource.isReadable()) {
+                // Устанавливаем заголовки для скачивания файла как вложения
+                System.out.println("send file");
+                return ResponseEntity.ok()
+                        .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                        .body(resource);
+            } else {
+                // Возвращаем статус 404, если файл не найден
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            // В случае ошибки возвращаем статус 500
+            return ResponseEntity.internalServerError().build();
+        }
+
+
+    }
+
+    @GetMapping("/getdata")
+    public ResponseEntity<String> getData() {
+        String response = "Это ответ от моего сервера";
+        System.out.println("WIN!!!!!");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     @GetMapping("/api/example")
     public ResponseEntity<String> exampleMethod() {
 
